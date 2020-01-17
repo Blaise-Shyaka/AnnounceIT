@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Roboto:400,700|Source+Sans+Pro:400,700&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+}
+
+.container{
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    padding: 0.4rem;
+    border-radius: 3px;
+}
+
+.signin-signup-buttons {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#signin {
+    background-color: #288383;
+}
+
+#signup {
+    background-color: #083343;
+}
+
+.logo {
+    width: 25%;
+}
+
+.logo img {
+    width: 75%;
+    margin-right: 3.5rem;
+}
+
+.intro-panel {
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(215,195,15,1) 100%);
+    margin: 0 auto;
+    padding: 0.5rem 1.5rem;
+}
+
+.introduction {
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome-intro {
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome-intro img {
+    width: 50%;
+    margin: 1.5rem auto;
+    border-radius: 8px;
+}
+
+.welcome-description {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem auto;
+}
+
+.welcome-description h1 {
+    text-align: center;
+}
+
+.welcome-description a {
+    text-decoration: none;
+    text-align: center;
+    color: whitesmoke;
+    background-color: #083343;
+    width: 40%;
+    margin: 0.5rem auto;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.guide-boards {
+    width: 90%;
+    margin: 0.5rem auto;
+}
+
+.board {
+    border: 1px solid #333;
+    margin-bottom: 1.2rem;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #333;
+}
+
+.board-header {
+    display: flex;
+    border-bottom: 0.1rem solid #333333;
+}
+
+.board-number {
+    border: 0.3rem solid #ff9800;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50%;
+    margin: 1rem;
+    height: 50%;
+}
+
+.board-body {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 1rem;
+}
+
+.board-body img {
+    width: 25%;
+    margin: 0.5rem auto;
+    border-radius: 5px;
+}
+
+.board-description {
+    margin: 1rem;
+    padding: 1rem 0.2rem;
+}
+
+.board-description p {
+    font-size: 1.1rem;
+}
+
+.board-description a {
+    text-decoration: none;
+    color: whitesmoke;
+    background-color: #083343;
+    padding: 0.7rem;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.update-feature {
+    background-color: #083343;
+    border-top-right-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    color: whitesmoke;
+}
+
+.update-feature p {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem;
+    line-height: 2rem;
+}
+
+.view-feature {
+    background-color: #288383;
+    border-top-left-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    color: whitesmoke;
+}
+
+.view-feature p {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem;
+    line-height: 2rem;
+}
+
+.announcement-state-feature {
+    background-color: #8b8014;
+    border-top-right-radius: 20px;
+    padding: 1.5rem;
+    color: whitesmoke;
+}
+
+.announcement-state-feature p {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem;
+    line-height: 2rem;
+}
+
+footer {
+    background-color: #083343;
+    padding: 0.5rem;
+    color: whitesmoke;
+    text-align: center;
+}
+
+@media only screen and (min-width: 550px) {
+    #logo {
+        width: 15%;
+        margin-right: 20rem;
+    }
+
+    .signin-signup-buttons {
+        width: 40%;
+    }
+ 
+     #signin, #signup {
+         padding: 0.5rem;
+         font-size: 1rem;
+     }
+
+     .welcome-intro {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .welcome-intro img {
+        width: 30%;
+        border-radius: 10px;
+    }
+
+    .welcome-description {
+        width: 60%;
+    }
+
+    .welcome-description h1 {
+        font-size: 1.2rem;
+    }
+
+    .welcome-description a {
+        font-size: 0.9rem;
+        width: 30%;
+    }
+
+    .steps h2 {
+        font-size: 2rem;
+    }
+
+    .steps h4 {
+        font-size: 1rem;
+    }
+
+    .board-body {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .board-body img {
+        width: 20%;
+    }
+
+    .board-description {
+        margin: 0 auto;
+    }
+
+    .board-description p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .board-description a {
+        font-size: 1rem;
+    }
+
+}
+
+@media only screen and (min-width: 770px) {
+    .logo {
+        width: 12%;
+    }
+
+    .welcome-description h1 {
+        font-size: 1.8rem;
+    }
+
+    .signin-signup-buttons {
+        width: 30%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #signin, #signup {
+        padding: 0.7rem 1.5rem;
+    }
+
+    .welcome-description a {
+        width: 25%;
+    }
+
+    .welcome-description h1 {
+        font-size: 2.8rem;
+    }
+
+    .board {
+        width: 75%;
+    }
+
+    .one, .three {
+        margin-left: 15%;
+    }
+
+    .board-description a {
+        padding: 1rem 2rem;
+    }
+
+    .more-features {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        max-height: 5%;
+    }
+
+    .ft {
+        width: 28%;
+        margin-bottom: 0.1rem;
+    }
+
+    .view-feature {
+        border-top-right-radius: 20px;
+        border-top-left-radius: 0;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    nav {
+        width: 80%;
+        margin: 1rem auto;
+    }
+
+    .logo {
+        width: 20%;
+    }
+
+    .signin-signup-buttons {
+        width: 40%;
+    }
+
+    #signin, #signup {
+        font-size: 1.2rem;
+        padding: 1rem 1.7rem;
+    }
+
+    .introduction {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .welcome-intro img {
+        width: 25%;
+    }
+
+    .guide-boards {
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 1900px) {
+    nav {
+        width: 50%;
+        margin: 1rem auto;
+    }
+
+    #logo {
+        width: 10%;
+    }
+
+    .introduction {
+        width: 50%;
+        margin: 1rem auto;
+    }
+
+    .guide-boards {
+        width: 50%;
+        margin: 1rem auto;
+    }
+}
