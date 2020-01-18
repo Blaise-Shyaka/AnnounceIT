@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Roboto:400,700|Source+Sans+Pro:400,700&display=swap');
+
+body {
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(215,195,15,1) 100%);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    background-color: #ffffff;
+    opacity: 0.85;
+    width: 95%;
+    margin: 17% auto;
+    min-height: 22rem;
+    box-shadow: 5px 2px 5px grey;
+}
+
+.logo-bar {
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    background: rgba(215,195,15,1);
+}
+
+.logo-bar img{
+    width: 15%;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1rem;
+    padding-top: 1.2rem;
+}
+
+label {
+    margin: 1rem;
+    font-size: 0.8rem;
+    margin-left: 10%;
+}
+
+input {
+    margin: 1rem 0.5rem;
+    padding: 0.5rem;
+    width: 75%;
+    margin-left:10%;
+}
+
+#register {
+    margin: 1.5rem auto;
+    padding: 0.5rem 0.1rem;
+    width: 40%;
+    font-size: 1rem;
+    color: white;
+    background-color: #083343;
+    border: none;
+    border-radius: 5px;
+    margin-left: 25%;
+}
+
+#register:hover {
+    background-color: #288383;
+}
+
+@media only screen and (min-width: 500px) {
+    .container {
+        width: 70%;
+        margin-top: 10%;
+    }
+
+    .logo-bar img {
+        width: 8%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .container {
+        width: 40%;
+        margin-top: 3%;
+        margin-bottom: 0;
+    }
+
+    .logo-bar img {
+        width: 6%;
+    }
+
+    .logo-bar {
+        background: rgba(215,195,15,0);
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin: 1.2rem;
+    }
+
+    #register {
+        width: 20%;
+    }
+} 
