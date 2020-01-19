@@ -15,6 +15,7 @@ body {
     margin: 17% auto;
     min-height: 22rem;
     box-shadow: 5px 2px 5px grey;
+    padding-bottom: 1.5rem;
 }
 
 .logo-bar {
@@ -62,6 +63,14 @@ input {
 
 #register:hover {
     background-color: #288383;
+}
+
+.redirect-to-signin {
+    text-align: center;
+}
+
+.redirect-to-signin a {
+    color: #083343;
 }
 
 @media only screen and (min-width: 500px) {
