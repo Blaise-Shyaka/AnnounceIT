@@ -49,13 +49,15 @@ input {
     width: 30%;
 }
 
-.forgot-password {
-    margin: 0 4rem;
+.redirect-links {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
 }
 
-.forgot-password a {
-    color: #114949;
-    font-size: 1rem;
+.redirect-links a {
+    font-size: 0.9rem;
 }
 
 @media only screen and (min-width: 490px) {
