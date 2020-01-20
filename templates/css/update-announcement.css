@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Roboto:400,700|Source+Sans+Pro:400,700&display=swap');
+
+body {
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(215,195,15,1) 100%);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    background: #ffffff;
+    width: 90%;
+    margin: 5% auto;
+    padding: 0.2rem;
+}
+
+.cancel-button {
+    margin: 1rem;
+    text-align: right;
+}
+
+.form {
+    padding: 1rem 2rem;
+    width: 80%;
+    margin: 0.5rem auto;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+#announcementText {
+    margin: 0.5rem auto;
+    width: 95%;
+}
+
+input {
+    margin-bottom: 1rem;
+}
+
+#endDate, #startDate {
+    width: 60%;
+}
+
+#submit {
+    margin-top: 0.8rem;
+    padding: 0.8rem;
+    font-size: 1rem;
+    background-color: #083343;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+}
+
+.cancel-button a {
+    text-decoration: none;
+    background-color: red;
+    color: white;
+    padding: 0.2rem 0.4rem;
+    font-weight: 600;
+}
+
+@media only screen and (min-width: 750px) {
+    .container {
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .container {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    .container {
+        width: 40%;
+    }
+}
