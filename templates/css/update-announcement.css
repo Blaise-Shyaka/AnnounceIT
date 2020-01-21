@@ -34,10 +34,16 @@ label {
 #announcementText {
     margin: 0.5rem auto;
     width: 95%;
+    font-size: 1.3rem;
 }
 
 input {
     margin-bottom: 1rem;
+}
+
+.display-date {
+    display: flex;
+    flex-direction: column;
 }
 
 #endDate, #startDate {
@@ -54,17 +60,48 @@ input {
     border-radius: 5px;
 }
 
-.cancel-button a {
+.submit-cancel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
+    align-items: center;
+}
+
+.submit-cancel a {
     text-decoration: none;
-    background-color: red;
-    color: white;
-    padding: 0.2rem 0.4rem;
-    font-weight: 600;
+    height: 50%;
+    margin-top: 0.8rem;
+    padding: 0.8rem;
+    font-size: 1rem;
+    background-color: #288383;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
 }
 
 @media only screen and (min-width: 750px) {
     .container {
         width: 60%;
+    }
+
+    .display-date {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 95%;
+        margin: 0.5 auto;
+        padding-right: 0.5rem;
+    }
+
+    .start, .end {
+        width: 35%;
+    }
+
+    #endDate, #startDate {
+        width: 100%;
+        height: 2rem;
+        font-size: 1.2rem;
     }
 }
 
