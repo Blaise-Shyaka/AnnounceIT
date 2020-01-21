@@ -18,13 +18,16 @@
                 <br>
                 <textarea name="announcementText" id="announcementText" cols="30" rows="20" placeholder="Please type your announcement here ..." minlength="10" required></textarea>
                 <br>
-                <label for="startDate">Start date:</label>
-                <br>
-                <input type="date" name="startDate" id="startDate" required>
-                <br>
-                <label for="endDate">End date:</label>
-                <br>
-                <input type="date" name="endDate" id="endDate" required>
+                <div class="display-date">
+                    <div class="start">
+                        <label for="startDate">Start date:</label>
+                        <input type="date" name="startDate" id="startDate" required>
+                    </div>
+                    <div class="end">
+                        <label for="endDate">End date:</label>
+                        <input type="date" name="endDate" id="endDate" required>
+                    </div>
+                </div>
                 <br>
                 <input type="submit" value="Submit" id="submit">
             </form>
