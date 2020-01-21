@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AnnounceIT | Admin dashboard</title>
+    <link rel="stylesheet" href="../css/admin-dashboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="../images/logo.png" alt="">
+            </div>
+            <div class="welcome-name">
+                <p>Welcome, <span id="firstname"></span>!</p>
+            </div>
+        </header>
+
+        <div class="menu">
+            <a class="material-icons" id="dehaze">dehaze</a>
+        </div>
+
+        <div class="wrapper">
+            <ul class="show" id="show">
+                <h3>Admin menu</h3>
+                <li><a href="#" class="viewAll">Users announcements</a></li>
+            </ul>
+            <section class="nav-display">
+                <nav>
+                    <ul class="hide" id="hide-show">
+                        <li><a href="#" id="viewAll">Users announcements</a></li>
+                    </ul>
+                </nav>
+                
+                <section class="display">
+                    <div class="announcements" id="announcements">
+                        <div class="announcement">
+                            <div class="header">
+                                <div class="title">
+                                    <h3 class="announcement-title">Lorem Ipsum</h3>
+                                </div>
+                                <div class="creator-and-status">
+                                    <p>Creator: <span id="creator">John Smith</span></p>
+                                    <p>Status: <span id="status"></span>Active</p>
+                                </div>
+                            </div>
+                            <div class="body">
+                                <p class="announcement-body">Lorem ipsum dolor sit amet</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+
+        
+    </div>
+    <script src="../js/admin-dashboard.js"></script>
+</body>
+</html>
