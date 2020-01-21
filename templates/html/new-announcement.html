@@ -9,12 +9,9 @@
 </head>
 <body>
     <div class="container">
-        <div class="cancel-button">
-            <a href="#">X</a>
-        </div>
         <div class="form">
             <form action="">
-                <label for="announcementText">What would you like to communicate:</label>
+                <label for="announcementText">What would you like to communicate?</label>
                 <br>
                 <textarea name="announcementText" id="announcementText" cols="30" rows="20" placeholder="Please type your announcement here ..." minlength="10" required></textarea>
                 <br>
@@ -29,7 +26,10 @@
                     </div>
                 </div>
                 <br>
-                <input type="submit" value="Submit" id="submit">
+                <div class="submit-cancel">
+                    <input type="submit" value="Submit" id="submit">
+                    <a href="#">Cancel</a>
+                </div>
             </form>
         </div>
     </div>
