@@ -34,6 +34,7 @@ label {
 #announcementText {
     margin: 0.5rem auto;
     width: 95%;
+    font-size: 1.4rem;
 }
 
 input {
@@ -49,6 +50,25 @@ input {
     width: 45%;
 }
 
+.submit-cancel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+}
+
+.submit-cancel a {
+    margin-top: 0.8rem;
+    padding: 0.8rem;
+    font-size: 1rem;
+    background-color: #288383;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+}
+
+
 #submit {
     margin-top: 0.8rem;
     padding: 0.8rem;
@@ -57,14 +77,6 @@ input {
     color: whitesmoke;
     border: none;
     border-radius: 5px;
-}
-
-.cancel-button a {
-    text-decoration: none;
-    background-color: red;
-    color: white;
-    padding: 0.2rem 0.4rem;
-    font-weight: 600;
 }
 
 @media only screen and (min-width: 750px) {
@@ -76,6 +88,14 @@ input {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        width: 95%;
+        align-items: center;
+    }
+
+    .start, .end {
+
+        display: flex;
+        flex-direction: column;
     }
 
     .form {
@@ -85,7 +105,9 @@ input {
     }
 
     #endDate, #startDate {
-        width: 52%;
+        width: 100%;
+        font-size: 1.3rem;
+        height: 2rem;
     }
 
 }
