@@ -66,18 +66,33 @@ const loadAllAnnouncements = () => {
                 return `<div class="announcement">
                 <div class="header">
                     <div class="title">
-                        <h3 class="announcement-title">${announcement.title}</h3>
+                        <h3 class="announcement-title">Lorem Ipsum</h3>
                     </div>
                     <div class="creator-and-status">
-                        <p>Creator: <span id="creator">${user.firstname} ${user.lastname}</span></p>
-                        <p>Status: <span id="status"></span>${announcement.status}</p>
+                        <p>Creator: <span id="creator">John Smith</span></p>
+                        <p>Status: <span id="status"></span>Active</p>
                     </div>
                 </div>
                 <div class="body">
                     <p class="announcement-body">Lorem ipsum dolor sit amet</p>
                 </div>
+                <div class="change-status-delete">
+                    <div class="status">
+                        <form action="">
+                            <label for="change-status">Change status:</label>
+                            <select name="change-status">
+                                <option value="change status" selected disabled>Change status</option>
+                                <option value="active">Active</option>
+                                <option value="deactivated">Deactivated</option>
+                                <option value="accepted">Accepted</option>
+                                <option value="declined">Declined</option>
+                            </select>
+                            <input type="submit" value="OK">
+                        </form>
+                    </div>
+                </div>
             </div>`
-            })
+            });
     
             return oneUserAnnouncements.join('');
         });
