@@ -80,6 +80,8 @@ const loadAllAnnouncements = () => {
                     <div class="status">
                         <form action="">
                             <label for="change-status">Change status:</label>
+                            <br>
+                            <br>
                             <select name="change-status">
                                 <option value="change status" selected disabled>Change status</option>
                                 <option value="active">Active</option>
@@ -89,6 +91,9 @@ const loadAllAnnouncements = () => {
                             </select>
                             <input type="submit" value="OK">
                         </form>
+                    </div>
+                    <div class="delete">
+                        <a href="#">Delete</a>
                     </div>
                 </div>
             </div>`
