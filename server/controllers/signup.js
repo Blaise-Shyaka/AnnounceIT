@@ -1,8 +1,12 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
 const express = require('express');
 const bcrypt = require('bcryptjs');
 
-const userExistsMessage = require('../helpers/response-messages');
+const {
+  userExistsMessage,
+  signupInstead
+} = require('../helpers/response-messages');
 
 const {
   validateNewUser,
