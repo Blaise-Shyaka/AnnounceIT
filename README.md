@@ -1,3 +1,7 @@
+[![Coverage Status](https://coveralls.io/repos/github/Blaise-Shyaka/AnnounceIT/badge.svg?branch=ft-advertiser-signup-endpoint-%23170842183)](https://coveralls.io/github/Blaise-Shyaka/AnnounceIT?branch=ft-advertiser-signup-endpoint-%23170842183)
+
+[![Build Status](https://travis-ci.org/Blaise-Shyaka/AnnounceIT.svg?branch=develop)](https://travis-ci.org/Blaise-Shyaka/AnnounceIT
+
 # AnnounceIT
 
 AnnounceIT is a solution that enables broadcasting agencies to receive and manage announcements.
