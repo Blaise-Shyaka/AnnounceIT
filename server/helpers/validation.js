@@ -29,4 +29,17 @@ const validateNewUser = userData => {
   return schema.validate(userData);
 };
 
-module.exports = validateNewUser;
+const validateExistingUser = data => {
+  const schema = Joi.object({
+    email: Joi.string()
+      .email()
+      .required(),
+    password: Joi.string()
+      .alphanum()
+      .required()
+  });
+
+  return schema.validate(data);
+};
+
+module.exports = { validateNewUser, validateExistingUser };
