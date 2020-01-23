@@ -6,6 +6,7 @@ const userExistsMessage = require('../helpers/response-messages');
 
 const {
   validateNewUser,
+  // eslint-disable-next-line no-unused-vars
   validateExistingUser
 } = require('../helpers/validation');
 const users = require('../data/users');
