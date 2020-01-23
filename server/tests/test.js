@@ -2,14 +2,13 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const app = require('../../app');
-const users = require('../data/users');
 
 const { should } = chai;
 
 should();
 chai.use(chaiHttp);
 
-/* global describe, it, beforeEach */
+/* global describe, it */
 describe('Create an account', () => {
   describe('POST /auth/signup', () => {
     const user = {
