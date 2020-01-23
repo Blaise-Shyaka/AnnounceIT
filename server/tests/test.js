@@ -57,6 +57,11 @@ describe('Create an account', () => {
             'phone_number',
             'password'
           ]);
+          res.body.data.first_name.should.equal(user.first_name);
+          res.body.data.last_name.should.equal(user.last_name);
+          res.body.data.email.should.equal(user.email);
+          res.body.data.address.should.equal(user.address);
+          res.body.data.phone_number.should.equal(user.phone_number);
         });
       done();
     });
