@@ -2,6 +2,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const app = require('../../app');
+const userExistsMessage = require('../helpers/response-messages');
 
 const { should } = chai;
 
@@ -93,11 +94,9 @@ describe('Create an account', () => {
           res.body.should.be.a('object');
           res.body.should.include.keys(['status', 'error']);
           res.body.status.should.be.a('string');
-          res.body.status.should.equal('error');
           res.body.error.should.be.a('string');
-          res.body.error.should.equal(
-            'The account already exists. Proceed with sign in instead'
-          );
+          res.body.status.should.equal(userExistsMessage.status);
+          res.body.error.should.equal(userExistsMessage.error);
         });
       done();
     });
