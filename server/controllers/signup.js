@@ -2,7 +2,12 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 
-const validateNewUser = require('../helpers/validation');
+const userExistsMessage = require('../helpers/response-messages');
+
+const {
+  validateNewUser,
+  validateExistingUser
+} = require('../helpers/validation');
 const users = require('../data/users');
 
 const signupRouter = express.Router();
@@ -20,11 +25,7 @@ signupRouter.post('/auth/signup', async (req, res) => {
   // Check if the user already exists
   const userExists = await users.find(user => user.email === value.email);
 
-  if (userExists)
-    return res.status(400).json({
-      status: 'error',
-      error: 'The account already exists. Proceed with sign in instead'
-    });
+  if (userExists) return res.status(400).json(userExistsMessage);
 
   // Generate user ID
   const generateUserId = () => {
@@ -46,7 +47,7 @@ signupRouter.post('/auth/signup', async (req, res) => {
     address: value.address,
     password: hashedPassword,
     is_admin: false,
-    is_blaclisted: false
+    is_blacklisted: false
   };
 
   // Create new user
