@@ -12,10 +12,6 @@ chai.use(chaiHttp);
 /* global describe, it, beforeEach */
 describe('Create an account', () => {
   describe('POST /auth/signup', () => {
-    beforeEach(() => {
-      users.pop();
-    });
-
     const user = {
       first_name: 'Jane',
       last_name: 'Doe',
