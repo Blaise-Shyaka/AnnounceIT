@@ -32,6 +32,16 @@ describe('Create an account', () => {
       email: 'janedoe@gmail.com'
     };
 
+    const existingUser = {
+      first_name: 'Sam',
+      last_name: 'Smith',
+      email: 'samsmith@gmail.com',
+      phone_number: '0784446352',
+      address: 'Kigali',
+      password: 'mypassword',
+      confirm_password: 'mypassword'
+    };
+
     it('On success, it should return status 201 alongside data property with new user info', done => {
       chai
         .request(app)
@@ -76,7 +86,7 @@ describe('Create an account', () => {
       chai
         .request(app)
         .post('/api/v1/auth/signup')
-        .send(user)
+        .send(existingUser)
         .end((err, res) => {
           if (err) return done(err);
           res.status.should.equal(400);
