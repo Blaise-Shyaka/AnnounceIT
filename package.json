@@ -2,8 +2,9 @@
   "name": "announceit",
   "version": "1.0.0",
   "description": "A tool that helps broadcasting agencies receive and manage announcements",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "app.js",
     "test": "nyc mocha ./server/tests/ --exit",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
