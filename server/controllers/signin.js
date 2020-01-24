@@ -48,7 +48,14 @@ signinRouter.post('/auth/signin', async (req, res) => {
 
   // Authenticate user
 
-  const token = jwt.sign(userExists, 'difficult_to_break_secret_token');
+  const token = jwt.sign(
+    userExists,
+    'difficult_to_break_secret_token',
+    (err, tkn) => {
+      if (err) return console.log(err);
+      return tkn;
+    }
+  );
 
   res
     .header('authorization', token)
