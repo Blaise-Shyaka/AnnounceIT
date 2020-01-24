@@ -4,9 +4,12 @@
   "description": "A tool that helps broadcasting agencies receive and manage announcements",
   "main": "app.js",
   "scripts": {
-    "start": "app.js",
     "test": "nyc mocha ./server/tests/ --exit",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./server -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/app.js"
   },
   "repository": {
     "type": "git",
@@ -45,5 +48,9 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1"
+  },
+  "engines": {
+    "node": "10.16.3",
+    "npm": "6.9.0"
   }
 }
