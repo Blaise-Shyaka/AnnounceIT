@@ -6,10 +6,11 @@
   "scripts": {
     "test": "nyc mocha ./server/tests/ --exit",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "dev": "nodemon --exec babel-node app.js",
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./server -s",
     "build": "npm run clean && npm run build-babel",
-    "start": "npm run build && node ./build/app.js"
+    "start": "npm run build && node build/app.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,11 @@
   },
   "homepage": "https://github.com/Blaise-Shyaka/AnnounceIT/templates/",
   "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/node": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/register": "^7.8.3",
     "coveralls": "^3.0.9",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
