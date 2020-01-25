@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const app = require('../../app');
+const app = require('../app');
 const {
   userExistsMessage,
   signupInstead
