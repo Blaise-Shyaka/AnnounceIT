@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 // eslint-disable-next-line consistent-return
 const authorizeUser = async (req, res, next) => {
@@ -10,25 +10,22 @@ const authorizeUser = async (req, res, next) => {
       error: 'Access to this resource is denied'
     });
 
-  console.log('ahead');
+    try{
+      const verifiedUser = await jwt.verify(token, 'difficult_to_break_secret_token');
+    
+      req.user = verifiedUser;
+    }
+    catch(err){
+      if(err) return res.status(401).json({
+        status: res.statusCode,
+        error: err.message
+      });
+    }
 
-  const verifiedUser = await jwt
-    .verify(token, 'difficult_to_break_secret_key')
-    .catch(err => {
-      if (err) console.log(err);
-    });
+    next();
+  } 
 
-  console.log(verifiedUser);
+  
 
-  if (!verifiedUser)
-    return res.status(401).json({
-      status: 'error',
-      error: 'Invalid token'
-    });
 
-  req.user = verifiedUser;
-
-  next();
-};
-
-module.exports = authorizeUser;
+export default authorizeUser;

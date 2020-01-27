@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
-const express = require('express');
-const bcrypt = require('bcryptjs');
+import express from 'express';
+import bcrypt from 'bcryptjs';
 
 const {
   userExistsMessage,
@@ -31,8 +31,7 @@ signupRouter.post('/auth/signup', async (req, res) => {
   const userExists = await users.find(user => user.email === value.email);
 
   if (userExists) return res.status(400).json(userExistsMessage);
-
-  // Generate user ID
+  
   const generateUserId = () => {
     if (users.length === 0) return 1;
     return users.length;
@@ -64,4 +63,4 @@ signupRouter.post('/auth/signup', async (req, res) => {
   });
 });
 
-module.exports = signupRouter;
+export default signupRouter;

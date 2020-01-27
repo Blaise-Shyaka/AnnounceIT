@@ -1,6 +1,6 @@
-const express = require('express');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+import express from 'express';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 const {
   // eslint-disable-next-line no-unused-vars
   validateNewUser,
@@ -48,28 +48,28 @@ signinRouter.post('/auth/signin', async (req, res) => {
 
   // Authenticate user
 
-  const token = jwt.sign(
-    userExists,
-    'difficult_to_break_secret_token',
-    (err, tkn) => {
-      if (err) return console.log(err);
-      return tkn;
-    }
-  );
+  try{
+    const token = await jwt.sign(
+      userExists,
+      'difficult_to_break_secret_token');
 
-  res
-    .header('authorization', token)
-    .status(201)
-    .json({
-      status: 'success',
-      data: {
-        token,
-        id,
-        first_name: userExists.first_name,
-        last_name: userExists.last_name,
-        email: userExists.email
-      }
+      res.header('authorization', token).status(201).json({
+        status: res.statusCode,
+        data: {
+          token,
+          id: userExists.id,
+          first_name: userExists.first_name,
+          last_name: userExists.last_name,
+          email: userExists.email
+        }
+      });
+  }
+  catch(e) {
+    if(e) return res.status(500).json({
+      status: 500,
+      error: e.message
     });
+  }
 });
 
-module.exports = signinRouter;
+export default signinRouter;

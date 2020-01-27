@@ -1,12 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const app = require('../app');
-const {
-  userExistsMessage,
-  signupInstead
-} = require('../helpers/response-messages');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import app from '../app';
+import {userExistsMessage} from '../helpers/response-messages';
 
 const { should } = chai;
 
