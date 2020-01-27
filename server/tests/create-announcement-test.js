@@ -1,82 +1,83 @@
 /* eslint-disable consistent-return */
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const app = require('../../app');
-const announcements = require('../data/announcements');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import app from '../app';
+import announcements from '../data/announcements';
 
 const { should } = chai;
 
 should();
 chai.use(chaiHttp);
 
-/* global describe, it, beforeEach */
-describe('Create announcement', () => {
+describe('Create a new announcement', () => {
   describe('POST /announcement', () => {
-    beforeEach(() => {
-      announcements.pop();
-    });
+
+    const defaultUserCredential = {
+      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZmlyc3RfbmFtZSI6IlNhbSIsImxhc3RfbmFtZSI6IlNtaXRoIiwiZW1haWwiOiJzYW1zbWl0aEBnbWFpbC5jb20iLCJwaG9uZV9udW1iZXIiOiIwNzg0NDQ2MzUyIiwiYWRkcmVzcyI6IktpZ2FsaSIsInBhc3N3b3JkIjoiJDJhJDEwJE5EcE4uVWl5ODNDTk9iMWdmbkhNNmVPUUNDbjA2a21EVHgwOHhnQTNoRjdJbTBZQURDQ20uIiwiaXNfYWRtaW4iOmZhbHNlLCJpc19ibGFjbGlzdGVkIjpmYWxzZSwiaWF0IjoxNTgwMTU3OTc0fQ.B-MZI4D1VVzI8bR7ppR3IRzLE99cz3GTo313W4d42I8'
+    }
+
+    const incorrectCredential = {
+      token: 'ashfldkhhkdfahdkhflkahdfjlhlkdhfalsd'
+    }
 
     const announcement = {
-      text: 'lorem ipsum dolor sit amet',
-      start_date: '12-09-2019',
-      end_date: '02-02-2020'
-    };
+      text: 'Lorem ipsum dolor sit amet',
+      start_date: '2020-01-02',
+      end_date: '2020-01-25'
+    }
 
-    it('should return status 201', done => {
+    const invalidAnnouncement = {
+      text: 'Lorem ipsum dolor sit amet'
+    }
+
+    it('Should return status 201 and an object with data and status properties', done => {
       chai
         .request(app)
         .post('/api/v1/announcement')
+        .set('authorization', defaultUserCredential.token)
         .send(announcement)
         .end((err, res) => {
-          if (err) return done(err);
-
+          if(err) return done(err);
           res.status.should.equal(201);
-        });
-      done();
-    });
-
-    it('should return an object', done => {
-      chai
-        .request(app)
-        .post('/api/v1/announcement')
-        .send(announcement)
-        .end((err, res) => {
-          if (err) return done(err);
-
           res.body.should.be.a('object');
-        });
-      done();
-    });
-
-    it('should return an object with status and data as keys', done => {
-      chai
-        .request(app)
-        .post('/api/v1/announcement')
-        .send(announcement)
-        .end((err, res) => {
-          if (err) return done(err);
-
           res.body.should.include.keys(['status', 'data']);
+          res.body.data.should.be.a('object');
+          res.body.data.text.should.be.a('string');
+          res.body.data.start_date.should.be.a('string');
+          res.body.data.end_date.should.be.a('string');
         });
       done();
     });
 
-    it('The data property should at least have 6 keys', done => {
+    it('Should return a validation error on wrong input', done => {
+
       chai
         .request(app)
         .post('/api/v1/announcement')
+        .set('authorization', defaultUserCredential.token)
+        .send(invalidAnnouncement)
+        .end((err, res) => {
+          if(err) return done(err);
+
+          res.status.should.equal(400);
+          res.body.should.be.a('object');
+          res.body.should.include.keys(['status', 'error']);
+          res.body.error.should.be.a('string');
+        });
+        done();
+    });
+
+    it('should return an authentication error, if the user lacks correct credentials', done => {
+
+      chai
+        .request(app)
+        .post('/api/v1/announcement')
+        .set('authorization', incorrectCredential)
         .send(announcement)
         .end((err, res) => {
-          if (err) return done(err);
+          if(err) return done(err);
 
-          res.status.should.include.keys([
-            'id',
-            'owner',
-            'status',
-            'text',
-            'start_date',
-            'end-date'
-          ]);
+          res.status.should.equal(401);
         });
       done();
     });
