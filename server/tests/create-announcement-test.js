@@ -16,8 +16,8 @@ describe('Create a new announcement', () => {
       email: 'samsmith@gmail.com',
       password: 'mypassword'
   }
-  
-    const defaultUserCredential = generateToken(data);
+
+  const defaultUserCredential = generateToken(data);
   
     const incorrectCredential = {
       token: 'ashfldkhhkdfahdkhflkahdfjlhlkdhfalsd'
