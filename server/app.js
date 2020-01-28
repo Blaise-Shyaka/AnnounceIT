@@ -2,8 +2,11 @@ import express from 'express';
 import bodyParser from 'body-parser'
 import logger from 'morgan';
 import router from './routes/router';
+import env from 'dotenv';
 
 const app = express();
+
+env.config();
 
 app.use(bodyParser.json());
 app.use(logger('dev'));

@@ -1,6 +1,8 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import generateToken from '../helpers/generate-token';
+
 const {
   // eslint-disable-next-line no-unused-vars
   validateNewUser,
@@ -49,9 +51,7 @@ signinRouter.post('/auth/signin', async (req, res) => {
   // Authenticate user
 
   try{
-    const token = await jwt.sign(
-      userExists,
-      'difficult_to_break_secret_token');
+    const token = await generateToken(userExists);
 
       res.header('authorization', token).status(201).json({
         status: res.statusCode,

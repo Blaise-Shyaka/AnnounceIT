@@ -1,3 +1,3 @@
 const announcements = [];
 
-module.exports = announcements;
+export default announcements;
