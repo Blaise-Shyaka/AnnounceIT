@@ -40,7 +40,6 @@ describe('Logging user in', () => {
         .send(userData)
         .end((err, res) => {
           if (err) return done(err);
-
           res.status.should.equal(201);
           res.body.should.be.a('object');
           res.body.should.include.keys(['status', 'data']);
@@ -65,8 +64,8 @@ describe('Logging user in', () => {
           res.status.should.equal(400);
           res.body.should.be.a('object');
           res.body.should.include.keys(['status', 'error']);
-          res.body.status.should.be.a('string');
-          res.body.status.should.equal('error');
+          res.body.status.should.be.a('number');
+          res.body.status.should.equal(400);
           res.body.error.should.be.a('string');
         });
       done();
@@ -81,10 +80,10 @@ describe('Logging user in', () => {
           if (err) return done(err);
           res.status.should.equal(401);
           res.body.should.be.a('object');
-          res.body.status.should.be.a('string');
-          res.body.error.should.be.a('string');
-          res.body.status.should.equal(signupInstead.status);
-          res.body.error.should.equal(signupInstead.error);
+          res.body.error.should.be.a('number');
+          res.body.message.should.be.a('string');
+          res.body.error.should.equal(401);
+          res.body.message.should.equal(signupInstead);
         });
       done();
     });
@@ -98,10 +97,10 @@ describe('Logging user in', () => {
           if (err) return done(err);
           res.status.should.equal(401);
           res.body.should.be.a('object');
-          res.body.status.should.be.a('string');
-          res.body.error.should.be.a('string');
-          res.body.status.should.equal(incorrectCredentials.status);
-          res.body.error.should.equal(incorrectCredentials.error);
+          res.body.error.should.be.a('number');
+          res.body.message.should.be.a('string');
+          res.body.error.should.equal(401);
+          res.body.message.should.equal(incorrectCredentials);
         });
       done();
     });
