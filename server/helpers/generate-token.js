@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-import env from 'dotenv'
 
 const generateToken = (data) => {
     const token = jwt.sign(data, process.env.TOKEN_SECRET_KEY);

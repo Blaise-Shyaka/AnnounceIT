@@ -18,6 +18,7 @@ describe('Create a new announcement', () => {
   }
 
   const defaultUserCredential = generateToken(data);
+  console.log(defaultUserCredential)
   
     const incorrectCredential = {
       token: 'ashfldkhhkdfahdkhflkahdfjlhlkdhfalsd'
@@ -40,6 +41,7 @@ describe('Create a new announcement', () => {
         .set('authorization', defaultUserCredential)
         .send(announcement)
         .end((err, res) => {
+          console.log(defaultUserCredential);
           if(err) return done(err);
           res.status.should.equal(201);
           res.body.should.be.a('object');

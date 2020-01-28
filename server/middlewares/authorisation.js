@@ -11,7 +11,7 @@ const authorizeUser = async (req, res, next) => {
     });
 
     try{
-      const verifiedUser = await jwt.verify(token, 'difficult_to_break_secret_token');
+      const verifiedUser = await jwt.verify(token, process.env.TOKEN_SECRET_KEY);
     
       req.user = verifiedUser;
     }
