@@ -51,7 +51,7 @@ signinRouter.post('/auth/signin', async (req, res) => {
   // Authenticate user
 
   try{
-    const token = await generateToken(userExists);
+    const token = generateToken(userExists);
 
       res.header('authorization', token).status(201).json({
         status: res.statusCode,
