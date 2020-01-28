@@ -1,20 +1,9 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 import generateToken from '../helpers/generate-token';
-
-const {
-  // eslint-disable-next-line no-unused-vars
-  validateNewUser,
-  validateExistingUser
-} = require('../helpers/validation');
-const users = require('../data/users');
-const {
-  // eslint-disable-next-line no-unused-vars
-  userExistsMessage,
-  signupInstead,
-  incorrectCredentials
-} = require('../helpers/response-messages');
+import {validateExistingUser} from '../helpers/validation';
+import users from '../data/users';
+import {signupInstead, incorrectCredentials} from '../helpers/response-messages';
 
 const signinRouter = express.Router();
 
@@ -25,13 +14,16 @@ signinRouter.post('/auth/signin', async (req, res) => {
 
   if (error)
     return res.status(400).json({
-      status: 'error',
+      status: res.statusCode,
       error: error.details[0].message
     });
 
   // Check whether the user exists
   const userExists = await users.find(user => user.email === value.email);
-  if (!userExists) return res.status(401).json(signupInstead);
+  if (!userExists) return res.status(401).json({
+    error: res.statusCode,
+    message: signupInstead
+  });
 
   // Verify whether the passwords match
   const correctPassword = await bcrypt.compare(
@@ -39,7 +31,10 @@ signinRouter.post('/auth/signin', async (req, res) => {
     userExists.password
   );
 
-  if (!correctPassword) return res.status(401).json(incorrectCredentials);
+  if (!correctPassword) return res.status(401).json({
+    error: res.statusCode,
+    message: incorrectCredentials
+  });
 
   // Get user ID
   const getUserId = () => {
