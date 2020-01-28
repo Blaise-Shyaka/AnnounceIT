@@ -1,5 +1,5 @@
 import express from 'express';
-import announcements from '../data/announcements';
+import { announcements } from '../data/announcements';
 import validateAnnouncement from '../helpers/validate-announcements';
 import authoriseUser from '../middlewares/authorisation';
 import internalValidationError from '../helpers/response-messages';
@@ -14,10 +14,26 @@ createAnnouncementRouter.post('/announcement', authoriseUser, async (req, res) =
       error: error.details[0].message
     });
 
-  announcements.push(value);
+  const generateAnnouncementId = () => {
+      if (announcements.length === 0) return 1;
+      return users.length;
+    };
+
+  const id = generateAnnouncementId();
+
+  const newAnnouncement = {
+    id,
+    owner: req.user.id,
+    status: 'pending',
+    text: value.text,
+    start_date: value.start_date,
+    end_date: value.end_date
+  }
+
+  announcements.push(newAnnouncement);
   res.status(201).json({
     status: res.statusCode,
-    data: value
+    data: newAnnouncement
   });
 }
 

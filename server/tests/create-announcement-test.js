@@ -18,9 +18,8 @@ describe('Create a new announcement', () => {
   }
 
   const defaultUserCredential = generateToken(data);
-  console.log(defaultUserCredential)
   
-    const incorrectCredential = {
+  const incorrectCredential = {
       token: 'ashfldkhhkdfahdkhflkahdfjlhlkdhfalsd'
     }
 
