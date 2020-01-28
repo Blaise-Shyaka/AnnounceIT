@@ -2,7 +2,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
-import announcements from '../data/announcements';
+import generateToken from '../helpers/generate-token';
 
 const { should } = chai;
 
@@ -12,10 +12,13 @@ chai.use(chaiHttp);
 describe('Create a new announcement', () => {
   describe('POST /announcement', () => {
 
-    const defaultUserCredential = {
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZmlyc3RfbmFtZSI6IlNhbSIsImxhc3RfbmFtZSI6IlNtaXRoIiwiZW1haWwiOiJzYW1zbWl0aEBnbWFpbC5jb20iLCJwaG9uZV9udW1iZXIiOiIwNzg0NDQ2MzUyIiwiYWRkcmVzcyI6IktpZ2FsaSIsInBhc3N3b3JkIjoiJDJhJDEwJE5EcE4uVWl5ODNDTk9iMWdmbkhNNmVPUUNDbjA2a21EVHgwOHhnQTNoRjdJbTBZQURDQ20uIiwiaXNfYWRtaW4iOmZhbHNlLCJpc19ibGFjbGlzdGVkIjpmYWxzZSwiaWF0IjoxNTgwMTU3OTc0fQ.B-MZI4D1VVzI8bR7ppR3IRzLE99cz3GTo313W4d42I8'
-    }
-
+    const data = {
+      email: 'samsmith@gmail.com',
+      password: 'mypassword'
+  }
+  
+    const defaultUserCredential = generateToken(data);
+  
     const incorrectCredential = {
       token: 'ashfldkhhkdfahdkhflkahdfjlhlkdhfalsd'
     }
@@ -34,7 +37,7 @@ describe('Create a new announcement', () => {
       chai
         .request(app)
         .post('/api/v1/announcement')
-        .set('authorization', defaultUserCredential.token)
+        .set('authorization', defaultUserCredential)
         .send(announcement)
         .end((err, res) => {
           if(err) return done(err);
@@ -54,7 +57,7 @@ describe('Create a new announcement', () => {
       chai
         .request(app)
         .post('/api/v1/announcement')
-        .set('authorization', defaultUserCredential.token)
+        .set('authorization', defaultUserCredential)
         .send(invalidAnnouncement)
         .end((err, res) => {
           if(err) return done(err);
