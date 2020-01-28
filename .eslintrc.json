@@ -1,6 +1,8 @@
 {
+    "parser": "babel-esling",
     "extends": ["airbnb", "prettier", "plugin:node/recommended"],
     "plugins": ["prettier"],
+    "parserOptions": {"sourceType": "module", "allowImportExportEverywhere": true},
     "rules": {
         "prettier/prettier": "warn"
     }

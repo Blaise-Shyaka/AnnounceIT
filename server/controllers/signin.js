@@ -1,18 +1,9 @@
-const express = require('express');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const {
-  // eslint-disable-next-line no-unused-vars
-  validateNewUser,
-  validateExistingUser
-} = require('../helpers/validation');
-const users = require('../data/users');
-const {
-  // eslint-disable-next-line no-unused-vars
-  userExistsMessage,
-  signupInstead,
-  incorrectCredentials
-} = require('../helpers/response-messages');
+import express from 'express';
+import bcrypt from 'bcryptjs';
+import generateToken from '../helpers/generate-token';
+import {validateExistingUser} from '../helpers/validation';
+import users from '../data/users';
+import {signupInstead, incorrectCredentials} from '../helpers/response-messages';
 
 const signinRouter = express.Router();
 
@@ -23,13 +14,16 @@ signinRouter.post('/auth/signin', async (req, res) => {
 
   if (error)
     return res.status(400).json({
-      status: 'error',
+      status: res.statusCode,
       error: error.details[0].message
     });
 
   // Check whether the user exists
   const userExists = await users.find(user => user.email === value.email);
-  if (!userExists) return res.status(401).json(signupInstead);
+  if (!userExists) return res.status(401).json({
+    error: res.statusCode,
+    message: signupInstead
+  });
 
   // Verify whether the passwords match
   const correctPassword = await bcrypt.compare(
@@ -37,7 +31,10 @@ signinRouter.post('/auth/signin', async (req, res) => {
     userExists.password
   );
 
-  if (!correctPassword) return res.status(401).json(incorrectCredentials);
+  if (!correctPassword) return res.status(401).json({
+    error: res.statusCode,
+    message: incorrectCredentials
+  });
 
   // Get user ID
   const getUserId = () => {
@@ -48,21 +45,26 @@ signinRouter.post('/auth/signin', async (req, res) => {
 
   // Authenticate user
 
-  const token = jwt.sign(userExists, 'difficult_to_break_secret_token');
+  try{
+    const token = generateToken(userExists);
 
-  res
-    .header('authorization', token)
-    .status(201)
-    .json({
-      status: 'success',
-      data: {
-        token,
-        id,
-        first_name: userExists.first_name,
-        last_name: userExists.last_name,
-        email: userExists.email
-      }
+      res.header('authorization', token).status(201).json({
+        status: res.statusCode,
+        data: {
+          token,
+          id: userExists.id,
+          first_name: userExists.first_name,
+          last_name: userExists.last_name,
+          email: userExists.email
+        }
+      });
+  }
+  catch(e) {
+    if(e) return res.status(500).json({
+      status: 500,
+      error: e.message
     });
+  }
 });
 
-module.exports = signinRouter;
+export default signinRouter;

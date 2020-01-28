@@ -1,16 +1,10 @@
-const userExistsMessage = {
-  status: 'error',
-  error: 'The account already exists. Proceed with sign in instead'
-};
+export const userExistsMessage = 'The account already exists. Proceed with sign in instead'
 
-const signupInstead = {
-  status: 'error',
-  error: 'User does not exist. Signup instead'
-};
 
-const incorrectCredentials = {
-  status: 'error',
-  error: 'Incorrect email or password'
-};
+export const signupInstead = 'User does not exist. Signup instead'
 
-module.exports = { userExistsMessage, signupInstead, incorrectCredentials };
+
+export const incorrectCredentials = 'Incorrect email or password';
+
+
+export const internalValidationError = 'Internal validation error';

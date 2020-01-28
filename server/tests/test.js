@@ -1,12 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const app = require('../app');
-const {
-  userExistsMessage,
-  signupInstead
-} = require('../helpers/response-messages');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import app from '../app';
+import {userExistsMessage} from '../helpers/response-messages';
 
 const { should } = chai;
 
@@ -80,8 +77,7 @@ describe('Create an account', () => {
           res.status.should.equal(400);
           res.body.should.be.a('object');
           res.body.should.include.keys(['status', 'error']);
-          res.body.status.should.be.a('string');
-          res.body.status.should.equal('error');
+          res.body.status.should.equal(400);
           res.body.error.should.be.a('string');
         });
       done();
@@ -96,10 +92,9 @@ describe('Create an account', () => {
           if (err) return done(err);
           res.status.should.equal(400);
           res.body.should.be.a('object');
-          res.body.status.should.be.a('string');
-          res.body.error.should.be.a('string');
-          res.body.status.should.equal(userExistsMessage.status);
-          res.body.error.should.equal(userExistsMessage.error);
+          res.body.message.should.be.a('string');
+          res.body.error.should.equal(400);
+          res.body.message.should.equal(userExistsMessage);
         });
       done();
     });
