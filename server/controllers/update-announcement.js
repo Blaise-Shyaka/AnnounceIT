@@ -20,6 +20,7 @@ updateAnnouncementRouter.patch(
         error: 404,
         message: resourceNotFound
       });
+
     const announcementIndex = announcements.indexOf(announcement);
 
     const { error, value } = await validateNewAnnouncement(req.body);
@@ -39,12 +40,18 @@ updateAnnouncementRouter.patch(
       end_date: value.end_date
     };
 
-    announcements[announcementIndex] = newAnnouncement;
-
-    res.status(201).json({
-      status: res.statusCode,
-      data: newAnnouncement
-    });
+    if (announcement.owner === req.user.id) {
+      announcements[announcementIndex] = newAnnouncement;
+      res.status(201).json({
+        status: res.statusCode,
+        data: newAnnouncement
+      });
+    } else {
+      res.status(404).json({
+        status: res.statusCode,
+        message: resourceNotFound
+      });
+    }
   }
 );
 

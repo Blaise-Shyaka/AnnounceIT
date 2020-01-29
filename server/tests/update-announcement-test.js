@@ -14,6 +14,7 @@ chai.use(chaiHttp);
 describe('Update an announcement', () => {
   describe('PATCH /announcement/:id', () => {
     const data = {
+      id: 1,
       email: 'samsmith@gmail.com',
       password: 'mypassword'
     };
@@ -37,10 +38,11 @@ describe('Update an announcement', () => {
     it('should return status 201 and an object with properties status and data', done => {
       chai
         .request(app)
-        .patch('/api/v1/announcement/2')
+        .patch('/api/v1/announcement/1')
         .set('authorization', defaultUserCredential)
         .send(newAnnouncement)
         .end((err, res) => {
+          console.log(res.body);
           if (err) return done(err);
           res.status.should.equal(201);
           res.body.should.be.a('object');
