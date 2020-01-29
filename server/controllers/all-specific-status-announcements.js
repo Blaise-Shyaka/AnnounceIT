@@ -23,7 +23,7 @@ allSpecificStatusAnnouncementsRouter.get(
     );
 
     if (allAnnouncements.length === 0)
-      res.status(404).json({
+      return res.status(404).json({
         error: 404,
         message: resourceNotFound
       });
