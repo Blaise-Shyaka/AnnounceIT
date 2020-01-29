@@ -1,4 +1,4 @@
-export const announcements = [
+const announcements = [
   {
     id: 1,
     owner: 1,
@@ -40,3 +40,5 @@ export const announcements = [
     end_date: '2020-02-02'
   }
 ];
+
+export default announcements;
