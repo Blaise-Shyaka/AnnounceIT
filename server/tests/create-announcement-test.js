@@ -9,29 +9,30 @@ const { should } = chai;
 should();
 chai.use(chaiHttp);
 
+/* globals describe, it */
+
 describe('Create a new announcement', () => {
   describe('POST /announcement', () => {
-
     const data = {
       email: 'samsmith@gmail.com',
       password: 'mypassword'
-  }
+    };
 
-  const defaultUserCredential = generateToken(data);
-  
-  const incorrectCredential = {
+    const defaultUserCredential = generateToken(data);
+
+    const incorrectCredential = {
       token: 'ashfldkhhkdfahdkhflkahdfjlhlkdhfalsd'
-    }
+    };
 
     const announcement = {
       text: 'Lorem ipsum dolor sit amet',
       start_date: '2020-01-02',
       end_date: '2020-01-25'
-    }
+    };
 
     const invalidAnnouncement = {
       text: 'Lorem ipsum dolor sit amet'
-    }
+    };
 
     it('Should return status 201 and an object with data and status properties', done => {
       chai
@@ -40,7 +41,7 @@ describe('Create a new announcement', () => {
         .set('authorization', defaultUserCredential)
         .send(announcement)
         .end((err, res) => {
-          if(err) return done(err);
+          if (err) return done(err);
           res.status.should.equal(201);
           res.body.should.be.a('object');
           res.body.should.include.keys(['status', 'data']);
@@ -53,32 +54,30 @@ describe('Create a new announcement', () => {
     });
 
     it('Should return a validation error on wrong input', done => {
-
       chai
         .request(app)
         .post('/api/v1/announcement')
         .set('authorization', defaultUserCredential)
         .send(invalidAnnouncement)
         .end((err, res) => {
-          if(err) return done(err);
+          if (err) return done(err);
 
           res.status.should.equal(400);
           res.body.should.be.a('object');
           res.body.should.include.keys(['status', 'error']);
           res.body.error.should.be.a('string');
         });
-        done();
+      done();
     });
 
     it('should return an authentication error, if the user lacks correct credentials', done => {
-
       chai
         .request(app)
         .post('/api/v1/announcement')
         .set('authorization', incorrectCredential)
         .send(announcement)
         .end((err, res) => {
-          if(err) return done(err);
+          if (err) return done(err);
 
           res.status.should.equal(401);
         });

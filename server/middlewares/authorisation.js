@@ -7,26 +7,23 @@ const authorizeUser = async (req, res, next) => {
 
   if (!token)
     return res.status(401).json({
-      status: status,
+      status: res.statusCode,
       error: accessDenied
     });
 
-    try{
-      const verifiedUser = await jwt.verify(token, process.env.TOKEN_SECRET_KEY);
-    
-      req.user = verifiedUser;
-    }
-    catch(err){
-      if(err) return res.status(401).json({
+  try {
+    const verifiedUser = await jwt.verify(token, process.env.TOKEN_SECRET_KEY);
+
+    req.user = verifiedUser;
+  } catch (err) {
+    if (err)
+      return res.status(401).json({
         status: res.statusCode,
         error: err.message
       });
-    }
+  }
 
-    next();
-  } 
-
-  
-
+  next();
+};
 
 export default authorizeUser;
