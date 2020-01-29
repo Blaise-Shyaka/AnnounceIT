@@ -1,5 +1,5 @@
 import express from 'express';
-import { announcements } from '../data/announcements';
+import announcements from '../data/announcements';
 import validateAnnouncement from '../helpers/validate-announcements';
 import authoriseUser from '../middlewares/authorisation';
 import internalValidationError from '../helpers/response-messages';
@@ -35,7 +35,7 @@ createAnnouncementRouter.post(
         end_date: value.end_date
       };
 
-      announcements.push(newAnnouncement);
+      announcements[announcements.length] = newAnnouncement;
       res.status(201).json({
         status: res.statusCode,
         data: newAnnouncement

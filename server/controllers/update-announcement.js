@@ -2,7 +2,7 @@ import express from 'express';
 import authoriseUser from '../middlewares/authorisation';
 import { resourceNotFound } from '../helpers/response-messages';
 import validateNewAnnouncement from '../helpers/validate-announcements';
-import { announcements } from '../data/announcements';
+import announcements from '../data/announcements';
 
 const updateAnnouncementRouter = express.Router();
 
