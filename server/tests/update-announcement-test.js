@@ -42,7 +42,6 @@ describe('Update an announcement', () => {
         .set('authorization', defaultUserCredential)
         .send(newAnnouncement)
         .end((err, res) => {
-          console.log(res.body);
           if (err) return done(err);
           res.status.should.equal(201);
           res.body.should.be.a('object');
