@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import accessDenied from '../helpers/response-messages';
 
 // eslint-disable-next-line consistent-return
 const authorizeUser = async (req, res, next) => {
@@ -6,26 +7,23 @@ const authorizeUser = async (req, res, next) => {
 
   if (!token)
     return res.status(401).json({
-      status: 'error',
-      error: 'Access to this resource is denied'
+      status: res.statusCode,
+      error: accessDenied
     });
 
-    try{
-      const verifiedUser = await jwt.verify(token, process.env.TOKEN_SECRET_KEY);
-    
-      req.user = verifiedUser;
-    }
-    catch(err){
-      if(err) return res.status(401).json({
+  try {
+    const verifiedUser = await jwt.verify(token, process.env.TOKEN_SECRET_KEY);
+
+    req.user = verifiedUser;
+  } catch (err) {
+    if (err)
+      return res.status(401).json({
         status: res.statusCode,
         error: err.message
       });
-    }
+  }
 
-    next();
-  } 
-
-  
-
+  next();
+};
 
 export default authorizeUser;

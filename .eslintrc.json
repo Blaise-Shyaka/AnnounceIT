@@ -1,9 +1,15 @@
 {
-    "parser": "babel-esling",
-    "extends": ["airbnb", "prettier", "plugin:node/recommended"],
-    "plugins": ["prettier"],
-    "parserOptions": {"sourceType": "module", "allowImportExportEverywhere": true},
-    "rules": {
-        "prettier/prettier": "warn"
-    }
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "prettier", "plugin:node/recommended"],
+  "plugins": ["prettier"],
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
+  "rules": {
+    "prettier/prettier": "warn",
+    "consistent-return": "off",
+    "node/no-unsupported-features/es-syntax": "off",
+    "eqeqeq": "warn"
+  }
 }

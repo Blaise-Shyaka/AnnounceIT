@@ -2,9 +2,9 @@
 /* eslint-disable consistent-return */
 import express from 'express';
 import bcrypt from 'bcryptjs';
-import {userExistsMessage} from '../helpers/response-messages'
-import {validateNewUser} from '../helpers/validation'
-import users from '../data/users'
+import { userExistsMessage } from '../helpers/response-messages';
+import { validateNewUser } from '../helpers/validation';
+import users from '../data/users';
 
 const signupRouter = express.Router();
 
@@ -21,10 +21,12 @@ signupRouter.post('/auth/signup', async (req, res) => {
   // Check if the user already exists
   const userExists = await users.find(user => user.email === value.email);
 
-  if (userExists) return res.status(400).json({
-    error: res.statusCode,
-    message: userExistsMessage});
-  
+  if (userExists)
+    return res.status(400).json({
+      error: res.statusCode,
+      message: userExistsMessage
+    });
+
   const generateUserId = () => {
     if (users.length === 0) return 1;
     return users.length;
