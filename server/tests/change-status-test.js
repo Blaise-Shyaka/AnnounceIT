@@ -2,11 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
 import generateToken from '../helpers/generate-token';
-import {
-  accessDenied,
-  resourceNotFound,
-  resourceNotModified
-} from '../helpers/response-messages';
+import { accessDenied, resourceNotFound } from '../helpers/response-messages';
 
 const { should } = chai;
 
