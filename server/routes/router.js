@@ -14,8 +14,8 @@ router.use('/api/v1/', signupRouter);
 router.use('/api/v1/', signinRouter);
 router.use('/api/v1/', createAnnouncementRouter);
 router.use('/api/v1/', updateAnnouncementRouter);
-router.use('/api/v1/', changeStatusRouter);
 router.use('/api/v1/', viewSpecificAnnouncementRouter);
+router.use('/api/v1/', changeStatusRouter);
 router.use('/api/v1/', allSpecificStatusAnnouncementsRouter);
 router.use('/api/v1/', deleteAnnouncementRouter);
 

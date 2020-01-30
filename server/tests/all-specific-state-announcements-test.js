@@ -13,7 +13,7 @@ chai.use(chaiHttp);
 /* global describe, it */
 
 describe('Get all announcements of a specific state', () => {
-  describe('GET /announcement/:status', () => {
+  describe('GET /announcements/:status', () => {
     const userData = {
       id: 1,
       email: 'samsmith@gmail.com',
@@ -33,7 +33,7 @@ describe('Get all announcements of a specific state', () => {
     it('should return status 200 and an object with status and data as properties', done => {
       chai
         .request(app)
-        .get('/api/v1/announcement/pending')
+        .get('/api/v1/announcements/pending')
         .set('authorization', userToken)
         .end((err, res) => {
           if (err) return done(err);
@@ -49,7 +49,7 @@ describe('Get all announcements of a specific state', () => {
     it('should return status 401, if announcements are requested by an admin', done => {
       chai
         .request(app)
-        .get('/api/v1/announcement/pending')
+        .get('/api/v1/announcements/pending')
         .set('authorization', adminToken)
         .end((err, res) => {
           if (err) return done(err);
@@ -68,7 +68,7 @@ describe('Get all announcements of a specific state', () => {
     it('should return error 404, if no announcements of that specific status is found', done => {
       chai
         .request(app)
-        .get('/api/v1/announcement/deactivated')
+        .get('/api/v1/announcements/deactivated')
         .set('authorization', userToken)
         .end((err, res) => {
           if (err) return done(err);
