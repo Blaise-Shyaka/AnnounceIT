@@ -5,8 +5,12 @@ const validateNewAnnouncement = data => {
     text: Joi.string()
       .min(3)
       .required(),
-    start_date: Joi.string().required(),
-    end_date: Joi.string().required()
+    start_date: Joi.date()
+      .format('YYYY-MM-DD')
+      .required(),
+    end_date: Joi.date()
+      .format('YYYY-MM-DD')
+      .required()
   });
 
   return schema.validate(data);

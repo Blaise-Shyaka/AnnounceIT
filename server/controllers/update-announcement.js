@@ -10,9 +10,9 @@ updateAnnouncementRouter.patch(
   '/announcement/:id',
   authoriseUser,
   async (req, res) => {
-    const announcementId = req.params.id;
+    const announcementId = parseInt(req.params.id, 10);
     const announcement = await announcements.find(
-      ann => ann.id == announcementId
+      ann => ann.id === announcementId
     );
 
     if (!announcement)

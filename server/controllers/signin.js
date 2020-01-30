@@ -1,9 +1,12 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import generateToken from '../helpers/generate-token';
-import {validateExistingUser} from '../helpers/validation';
+import { validateExistingUser } from '../helpers/validation';
 import users from '../data/users';
-import {signupInstead, incorrectCredentials} from '../helpers/response-messages';
+import {
+  signupInstead,
+  incorrectCredentials
+} from '../helpers/response-messages';
 
 const signinRouter = express.Router();
 
@@ -20,10 +23,11 @@ signinRouter.post('/auth/signin', async (req, res) => {
 
   // Check whether the user exists
   const userExists = await users.find(user => user.email === value.email);
-  if (!userExists) return res.status(401).json({
-    error: res.statusCode,
-    message: signupInstead
-  });
+  if (!userExists)
+    return res.status(401).json({
+      error: res.statusCode,
+      message: signupInstead
+    });
 
   // Verify whether the passwords match
   const correctPassword = await bcrypt.compare(
@@ -31,24 +35,21 @@ signinRouter.post('/auth/signin', async (req, res) => {
     userExists.password
   );
 
-  if (!correctPassword) return res.status(401).json({
-    error: res.statusCode,
-    message: incorrectCredentials
-  });
-
-  // Get user ID
-  const getUserId = () => {
-    return users.indexOf(userExists) + 1;
-  };
-
-  const id = getUserId();
+  if (!correctPassword)
+    return res.status(401).json({
+      error: res.statusCode,
+      message: incorrectCredentials
+    });
 
   // Authenticate user
 
-  try{
+  try {
     const token = generateToken(userExists);
 
-      res.header('authorization', token).status(201).json({
+    res
+      .header('authorization', token)
+      .status(200)
+      .json({
         status: res.statusCode,
         data: {
           token,
@@ -58,12 +59,12 @@ signinRouter.post('/auth/signin', async (req, res) => {
           email: userExists.email
         }
       });
-  }
-  catch(e) {
-    if(e) return res.status(500).json({
-      status: 500,
-      error: e.message
-    });
+  } catch (e) {
+    if (e)
+      return res.status(500).json({
+        status: 500,
+        error: e.message
+      });
   }
 });
 

@@ -6,7 +6,7 @@ import announcements from '../data/announcements';
 const allSpecificStatusAnnouncementsRouter = express.Router();
 
 allSpecificStatusAnnouncementsRouter.get(
-  '/announcement/:status',
+  '/announcements/:status',
   authoriseUser,
   (req, res) => {
     const { status } = req.params;

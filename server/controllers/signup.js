@@ -53,7 +53,7 @@ signupRouter.post('/auth/signup', async (req, res) => {
   await users.push(userWithHashedPassword);
 
   res.status(201).json({
-    status: 'success',
+    status: res.statusCode,
     data: userWithHashedPassword
   });
 });
