@@ -1,6 +1,6 @@
 import express from 'express';
 import authoriseUser from '../middlewares/authorisation';
-import { resourceNotFound, accessDenied } from '../helpers/response-messages';
+import { resourceNotFound } from '../helpers/response-messages';
 import announcements from '../data/announcements';
 
 const viewSpecificAnnouncementRouter = express.Router();

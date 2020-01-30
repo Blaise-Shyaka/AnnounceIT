@@ -2,7 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
 import generateToken from '../helpers/generate-token';
-import { resourceNotFound, accessDenied } from '../helpers/response-messages';
+import { resourceNotFound } from '../helpers/response-messages';
 
 const { should } = chai;
 
@@ -19,14 +19,7 @@ describe('View specific announcement', () => {
       password: 'mypassword'
     };
 
-    const differentUser = {
-      id: 2,
-      email: 'johnsmith@gmail.com',
-      password: 'adminpassword'
-    };
-
     const userToken = generateToken(userData);
-    const differentUserToken = generateToken(differentUser);
 
     it('should return status 200 and an object with status and data as properties', done => {
       chai
