@@ -7,6 +7,7 @@ import changeStatusRouter from '../controllers/change-status';
 import viewSpecificAnnouncementRouter from '../controllers/view-specific-announcement';
 import allSpecificStatusAnnouncementsRouter from '../controllers/all-specific-status-announcements';
 import deleteAnnouncementRouter from '../controllers/delete-announcement';
+import adminAllAnnouncementsRouter from '../controllers/admin-view-all-announcements';
 
 const router = express.Router();
 
@@ -18,5 +19,6 @@ router.use('/api/v1/', viewSpecificAnnouncementRouter);
 router.use('/api/v1/', changeStatusRouter);
 router.use('/api/v1/', allSpecificStatusAnnouncementsRouter);
 router.use('/api/v1/', deleteAnnouncementRouter);
+router.use('/api/v1/', adminAllAnnouncementsRouter);
 
 export default router;
