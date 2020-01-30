@@ -7,3 +7,5 @@ export const resourceNotFound = 'Resource not found';
 export const accessDenied = 'Access to this resource is denied';
 export const resourceNotModified =
   'The status was not modified. The former and current statuses are similar';
+export const updatedSuccessfully = 'Announcement updated successfully';
+export const deletedSuccessfully = 'Announcement deleted successfully';
