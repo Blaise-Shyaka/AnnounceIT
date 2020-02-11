@@ -1,9 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
-import chai  from 'chai';
+import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
-import {signupInstead, incorrectCredentials} from '../helpers/response-messages';
+import {
+  signupInstead,
+  incorrectCredentials
+} from '../helpers/response-messages';
 
 const { should } = chai;
 

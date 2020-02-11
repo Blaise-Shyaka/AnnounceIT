@@ -41,7 +41,7 @@ describe('Change announcement status by Admin', () => {
         .end((err, res) => {
           if (err) return done(err);
 
-          res.status.should.equal(201);
+          res.status.should.equal(200);
           res.body.should.include.keys(['status', 'data']);
           res.body.status.should.be.a('number');
           res.body.data.should.be.a('object');
