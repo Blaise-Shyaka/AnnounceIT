@@ -4,21 +4,22 @@ export const validateNewUser = userData => {
   const schema = Joi.object({
     first_name: Joi.string()
       .min(3)
-      .max(12)
+      .max(25)
       .required(),
     last_name: Joi.string()
       .min(3)
-      .max(12)
+      .max(25)
       .required(),
     email: Joi.string()
       .email()
       .required(),
     phone_number: Joi.string()
+      .min(10)
       .max(10)
       .required(),
     address: Joi.string()
       .min(4)
-      .max(12)
+      .max(25)
       .required(),
     password: Joi.string()
       .alphanum()

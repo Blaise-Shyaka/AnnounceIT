@@ -3,7 +3,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
-import {userExistsMessage} from '../helpers/response-messages';
+import { userExistsMessage } from '../helpers/response-messages';
 
 const { should } = chai;
 
