@@ -1,9 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
-import chai  from 'chai';
+import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
-import {signupInstead, incorrectCredentials} from '../helpers/response-messages';
+import {
+  signupInstead,
+  incorrectCredentials
+} from '../helpers/response-messages';
 
 const { should } = chai;
 
@@ -33,14 +36,14 @@ describe('Logging user in', () => {
       password: 'anotherpassword'
     };
 
-    it('should return status 201 and a data object containing basic user information', done => {
+    it('should return status 200 and a data object containing basic user information', done => {
       chai
         .request(app)
         .post('/api/v1/auth/signin')
         .send(userData)
         .end((err, res) => {
           if (err) return done(err);
-          res.status.should.equal(201);
+          res.status.should.equal(200);
           res.body.should.be.a('object');
           res.body.should.include.keys(['status', 'data']);
           res.body.data.should.include.keys([

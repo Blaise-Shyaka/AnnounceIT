@@ -42,7 +42,7 @@ updateAnnouncementRouter.patch(
 
     if (announcement.owner === req.user.id) {
       announcements[announcementIndex] = newAnnouncement;
-      res.status(201).json({
+      res.status(200).json({
         status: res.statusCode,
         data: newAnnouncement
       });

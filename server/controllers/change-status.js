@@ -46,7 +46,7 @@ changeStatusRouter.patch(
 
     announcements[announcementIndex].status = announcementStatus;
 
-    res.status(201).json({
+    res.status(200).json({
       status: res.statusCode,
       data: announcementOfInterest
     });

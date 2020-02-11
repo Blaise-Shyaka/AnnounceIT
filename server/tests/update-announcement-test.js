@@ -35,7 +35,7 @@ describe('Update an announcement', () => {
       token: 'ashfldkhhkdfahdkhflkahdfjlhlkdhfalsd'
     };
 
-    it('should return status 201 and an object with properties status and data', done => {
+    it('should return status 200 and an object with properties status and data', done => {
       chai
         .request(app)
         .patch('/api/v1/announcement/1')
@@ -43,11 +43,11 @@ describe('Update an announcement', () => {
         .send(newAnnouncement)
         .end((err, res) => {
           if (err) return done(err);
-          res.status.should.equal(201);
+          res.status.should.equal(200);
           res.body.should.be.a('object');
           res.body.should.include.keys(['status', 'data']);
           res.body.status.should.be.a('number');
-          res.body.status.should.equal(201);
+          res.body.status.should.equal(200);
           res.body.data.should.be.a('object');
           res.body.data.should.include.keys([
             'id',
