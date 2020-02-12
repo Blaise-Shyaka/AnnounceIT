@@ -1,8 +1,8 @@
 import express from 'express';
-import bodyParser from 'body-parser'
+import bodyParser from 'body-parser';
 import logger from 'morgan';
-import router from './routes/router';
 import env from 'dotenv';
+import router from './routes/router';
 
 const app = express();
 
