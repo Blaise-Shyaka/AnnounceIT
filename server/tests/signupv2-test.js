@@ -5,7 +5,6 @@ import chaiHttp from 'chai-http';
 import app from '../app';
 import { userExistsMessage } from '../helpers/response-messages';
 import pool from '../data/config';
-import tables from '../data/tables';
 
 const { should } = chai;
 
@@ -14,7 +13,7 @@ chai.use(chaiHttp);
 
 /* global describe, it, beforeEach */
 describe('Create an account with persistent data', () => {
-  describe('POST /auth/signup', () => {
+  describe('POST /auth/signup', async () => {
     const user = {
       first_name: 'Jane',
       last_name: 'Doe',
@@ -31,15 +30,12 @@ describe('Create an account with persistent data', () => {
       email: 'janedoe@gmail.com'
     };
 
-    const existingUser = {
-      first_name: 'Sam',
-      last_name: 'Smith',
-      email: 'samsmith@gmail.com',
-      phone_number: '0784446352',
-      address: 'Kigali',
-      password: 'mypassword',
-      confirm_password: 'mypassword'
-    };
+    const client = await pool.connect();
+    const existingUser = await client.query(
+      'SELECT * FROM users WHERE email = $1',
+      [user.email]
+    );
+    client.release();
 
     it('On success, it should return status 201 alongside data property with new user info', done => {
       chai
@@ -89,7 +85,7 @@ describe('Create an account with persistent data', () => {
       chai
         .request(app)
         .post('/api/v2/auth/signup')
-        .send(existingUser)
+        .send(existingUser.rows[0])
         .end((err, res) => {
           if (err) return done(err);
           res.status.should.equal(400);
