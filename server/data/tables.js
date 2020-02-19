@@ -1,7 +1,7 @@
 import pool from './config';
 
 const tables = {
-  users: `CREATE TABLE users IF NOT EXISTS (
+  users: `CREATE TABLE IF NOT EXISTS users (
           id SERIAL PRIMARY KEY,
           first_name VARCHAR(80) NOT NULL,
           last_name VARCHAR(80) NOT NULL,
@@ -12,7 +12,7 @@ const tables = {
           is_admin BOOLEAN NOT NULL,
           is_blacklisted BOOLEAN NOT NULL
       );`,
-  announcements: `CREATE TABLE announcements IF NOT EXISTS (
+  announcements: `CREATE TABLE IF NOT EXISTS announcements (
           id SERIAL PRIMARY KEY,
           owner INT REFERENCES users(id) NOT NULL,
           status VARCHAR NOT NULL,
